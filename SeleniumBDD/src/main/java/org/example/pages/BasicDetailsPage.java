@@ -37,7 +37,7 @@ public class BasicDetailsPage extends BaseClass {
     }
 
     public void clickContinue(){
-        driver.findElement(By.xpath("//button[@label='Continue']")).click();
+        driver.findElement(By.xpath("//button[@label='checkbox']")).click();
 
     }
     public BasicDetailsPage clickCancel(){
