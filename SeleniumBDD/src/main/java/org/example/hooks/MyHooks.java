@@ -18,6 +18,6 @@ public class MyHooks extends BaseClass {
     public void after(Scenario scenario){
         System.out.println("take screenshot");
         final byte [] screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
-        scenario.attach(screenshot,"image/png","image");
+        scenario.attach(screenshot,"image/png","image2");
     }
 }
