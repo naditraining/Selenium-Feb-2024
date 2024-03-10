@@ -23,7 +23,7 @@ public class RunCucumberTest extends AbstractTestNGCucumberTests {
     @BeforeMethod
     public void beforeMethod()
     {
-        System.out.println("befroe method");
+        System.out.println("testng before method");
     }
     @AfterMethod
     public void afterMethod()
