@@ -6,9 +6,9 @@ import io.cucumber.java.Scenario;
 import org.example.utility.BaseClass;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.chrome.ChromeDriver;
 
 public class MyHooks extends BaseClass {
-
 
     @Before
     public void before(){

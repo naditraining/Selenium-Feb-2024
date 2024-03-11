@@ -1,12 +1,25 @@
 package org.example.pages;
 
+import io.cucumber.java.Scenario;
 import org.example.utility.BaseClass;
 import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chromium.ChromiumDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 
+import java.util.Map;
+
 public class PersonalDetailsPage extends BaseClass {
+    ChromiumDriver driver =null;
+    Map<String,String> dataInMap =null;
+    public PersonalDetailsPage(ChromiumDriver driver,Map<String,String> dataInMap){
+        this.driver = driver;
+        this.dataInMap = dataInMap;
+    }
 
     public void enterFirstName(){
         driver.findElement(By.xpath("//input[@id='firstName']")).sendKeys("Sheela");
@@ -57,8 +70,9 @@ public class PersonalDetailsPage extends BaseClass {
     public void clickBack(){
 
     }
-    public void clickContinue(){
+    public void clickContinue(Scenario scenario){
         driver.findElement(By.xpath("//button[@label='Continue']")).click();
+
     }
 
 

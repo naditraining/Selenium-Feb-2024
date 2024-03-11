@@ -1,7 +1,9 @@
 package org.example.steps;
 
+import io.cucumber.java.Scenario;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
+import org.example.hooks.MyHooks;
 import org.example.pages.BasicDetailsPage;
 import org.example.pages.PersonalDetailsPage;
 import org.example.utility.BaseClass;
@@ -23,18 +25,22 @@ import java.util.Map;
 public class IrctcSteps extends BaseClass {
 
 
-    Map<String,String> testData;
+    Scenario scenario = null;
+    public IrctcSteps(){
 
+    }
+    Map<String,String> testData;
     @Given("As a user launching the irctc portal")
-    public void register() {
+    public void register(Scenario scenario) {
+        this.scenario = scenario;
         loadProperties();
         launchApp();
     }
 
-
     @When("I enter personal details")
     public void personalDetails(){
-        PersonalDetailsPage personal = new PersonalDetailsPage();
+
+        PersonalDetailsPage personal = new PersonalDetailsPage(driver,rowDataToUse);
         personal.enterFirstName();
         personal.enterMiddleName();
         personal.enterLastName();
@@ -46,7 +52,7 @@ public class IrctcSteps extends BaseClass {
         personal.enterEmail();
         personal.enterMobile();
         personal.chooseNationaltiy();
-        personal.clickContinue();
+        personal.clickContinue(scenario);
     }
 
     @When("I read test data for {string}")
@@ -57,7 +63,7 @@ public class IrctcSteps extends BaseClass {
     @When("I enter address details")
     public void addressDetails(){
 
-/*        driver.findElement(By.xpath("//input[@id='resAddress1']")).sendKeys("No3, Gandhi Nagar");
+        driver.findElement(By.xpath("//input[@id='resAddress1']")).sendKeys("No3, Gandhi Nagar");
         driver.findElement(By.xpath("//input[@id='resAddress2']")).sendKeys("Mookondapalli");
         driver.findElement(By.xpath("//input[@id='resAddress3']")).sendKeys("Hosur");
         driver.findElement(By.xpath("//input[@name='resPinCode']")).sendKeys("635126");
@@ -96,36 +102,22 @@ public class IrctcSteps extends BaseClass {
         actions.moveToElement(button);
         actions.perform();
         WebElement checkbox= wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@formcontrolname='termCondition']")));
-        ((JavascriptExecutor)driver).executeScript("arguments[0].click();", checkbox);*/
+        ((JavascriptExecutor)driver).executeScript("arguments[0].click();", checkbox);
 
     }
 
     @When("registration is complete")
     public void complete(){
-      /*  String successMesage = driver.findElement(By.xpath("//div[@results]")).getText();
-        String expectedText = "sucessfully registered";
-        if(successMesage == expectedText){
-            System.out.println("TEST PASSSED");
-        }else {
-
-        }*/
+        System.out.println("dummy statement for registration completion");
     }
 
     @When("I enter basic details")
     public void enterBasicDetails(){
 
-        BasicDetailsPage basic = new BasicDetailsPage();
+        System.out.println("printing driver object in step defintion "+driver);
+        BasicDetailsPage basic = new BasicDetailsPage(driver,rowDataToUse);
 
-        basic.enterUsername().enterPassword().enterConfirmPassword().choosePrefLanguage().chooseSecurityQuestion().enterSecurityAnswer().clickContinue();
-
-        /*basic.enterUsername();
-        basic.enterPassword();
-        basic.enterConfirmPassword();
-        basic.choosePrefLanguage();
-        basic.chooseSecurityQuestion();
-        basic.enterSecurityAnswer();
-        basic.clickContinue();*/
-
+        basic.enterUsername().enterPassword().enterConfirmPassword().choosePrefLanguage().chooseSecurityQuestion().enterSecurityAnswer().clickContinue(scenario);
 
     }
 

@@ -8,7 +8,7 @@ import org.testng.annotations.DataProvider;
 
 @CucumberOptions(
         features = "src/test/resources/features", // Specify the path to your feature files
-        glue = {"org.example.steps","org.example.hooks"}, // Specify the package where your step definitions are located
+        glue = {"org.example.steps","org.example.utility"}, // Specify the package where your step definitions are located
         plugin = {"pretty", "html:target/cucumber-reports/cucumber-pretty.html",
                 "json:target/cucumber-reports/CucumberTestReport.json",
                 "rerun:target/cucumber-reports/rerun.txt",
