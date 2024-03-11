@@ -28,7 +28,7 @@ public class RunCucumberTest extends AbstractTestNGCucumberTests {
     @AfterMethod
     public void afterMethod()
     {
-        System.out.println("my new after method");
+        System.out.println("new after method");
     }
 
     @Override
