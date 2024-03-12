@@ -31,8 +31,7 @@ public class IrctcSteps extends BaseClass {
     }
     Map<String,String> testData;
     @Given("As a user launching the irctc portal")
-    public void register(Scenario scenario) {
-        this.scenario = scenario;
+    public void register() {
         loadProperties();
         launchApp();
     }
